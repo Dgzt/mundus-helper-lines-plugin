@@ -9,6 +9,8 @@ plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm") version "1.9.0"
 
+    kotlin("kapt") version "1.9.0"
+
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
 }
@@ -20,6 +22,7 @@ repositories {
 
 dependencies {
     api("org.pf4j:pf4j:3.10.0")
+    kapt("org.pf4j:pf4j:3.10.0")
     api(files("../libs/plugin-api-0.5.1.jar"))
 }
 
