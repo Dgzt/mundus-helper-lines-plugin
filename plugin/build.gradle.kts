@@ -30,6 +30,16 @@ java {
     }
 }
 
+tasks.withType<Jar> {
+    // Otherwise you'll get a "No main manifest attribute" error
+    manifest {
+        attributes["Plugin-Class"]= "com.dgzt.mundus.plugin.helperlines.HelperLinesPlugin"
+        attributes["Plugin-Id"] = "helper-lines-plugin"
+        attributes["Plugin-Provider"] = "Tibor Zsuro (Dgzt)"
+        attributes["Plugin-Version"] = "0.0.1"
+    }
+}
+
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
