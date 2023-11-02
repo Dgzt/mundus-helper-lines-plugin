@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = "mundus-helper-lines-plugin"
-include("lib")
+include("plugin")
