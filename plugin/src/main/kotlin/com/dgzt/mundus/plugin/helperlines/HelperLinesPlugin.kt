@@ -3,16 +3,27 @@
  */
 package com.dgzt.mundus.plugin.helperlines
 
+import com.mbrlabs.mundus.pluginapi.EventExtension
 import com.mbrlabs.mundus.pluginapi.Example
+import com.mbrlabs.mundus.pluginapi.PluginEventManager
 import org.pf4j.Extension
 import org.pf4j.Plugin
 
 class HelperLinesPlugin : Plugin() {
 
     @Extension
-    class A : Example {
+    class HelperLinesExampleExtension : Example {
         override fun getName(): String {
             return "Helper lines"
         }
+    }
+
+    @Extension
+    class HelperLinesEventExtension : EventExtension {
+
+        override fun manageEvents(pluginEventManager: PluginEventManager) {
+            pluginEventManager.registerEventListener(TerrainVerticesChangedEventListener())
+        }
+
     }
 }

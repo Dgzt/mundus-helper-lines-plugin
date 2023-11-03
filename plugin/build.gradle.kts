@@ -22,8 +22,10 @@ repositories {
 
 dependencies {
     api("org.pf4j:pf4j:3.10.0")
+    api("com.badlogicgames.gdx:gdx:1.12.0")
     kapt("org.pf4j:pf4j:3.10.0")
     api(files("../libs/plugin-api-0.5.1.jar"))
+    api(files("../libs/editor-commons-0.5.1.jar"))
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
