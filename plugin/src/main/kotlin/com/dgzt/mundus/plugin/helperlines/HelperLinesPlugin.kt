@@ -4,7 +4,7 @@
 package com.dgzt.mundus.plugin.helperlines
 
 import com.mbrlabs.mundus.pluginapi.EventExtension
-import com.mbrlabs.mundus.pluginapi.Example
+import com.mbrlabs.mundus.pluginapi.MenuExtension
 import com.mbrlabs.mundus.pluginapi.PluginEventManager
 import org.pf4j.Extension
 import org.pf4j.Plugin
@@ -12,7 +12,7 @@ import org.pf4j.Plugin
 class HelperLinesPlugin : Plugin() {
 
     @Extension
-    class HelperLinesExampleExtension : Example {
+    class HelperLinesMenuExtension : MenuExtension {
         override fun getName(): String {
             return "Helper lines"
         }
