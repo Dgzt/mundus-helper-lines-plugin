@@ -3,19 +3,28 @@
  */
 package com.dgzt.mundus.plugin.helperlines
 
+import com.badlogic.gdx.Gdx
 import com.mbrlabs.mundus.pluginapi.EventExtension
 import com.mbrlabs.mundus.pluginapi.MenuExtension
 import com.mbrlabs.mundus.pluginapi.PluginEventManager
+import com.mbrlabs.mundus.pluginapi.ui.RootWidget
 import org.pf4j.Extension
 import org.pf4j.Plugin
 
 class HelperLinesPlugin : Plugin() {
 
+    companion object {
+        const val RECTANGLE_RADIO_BUTTON_TEXT = "Rectangle"
+        const val HEXAGON_RADIO_BUTTON_TEXT = "Hexagon"
+    }
+
     @Extension
     class HelperLinesMenuExtension : MenuExtension {
-        override fun getName(): String {
-            return "Helper lines"
+        override fun getMenuName(): String = "Helper lines"
+        override fun setupDialogRootWidget(root: RootWidget) {
+            root.addRadioButtons(RECTANGLE_RADIO_BUTTON_TEXT, HEXAGON_RADIO_BUTTON_TEXT) { Gdx.app.log("", "Selected: $it") }
         }
+
     }
 
     @Extension
