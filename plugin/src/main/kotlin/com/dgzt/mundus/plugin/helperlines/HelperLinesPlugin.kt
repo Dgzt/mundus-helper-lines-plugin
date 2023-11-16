@@ -23,6 +23,12 @@ class HelperLinesPlugin : Plugin() {
         override fun getMenuName(): String = "Helper lines"
         override fun setupDialogRootWidget(root: RootWidget) {
             root.addRadioButtons(RECTANGLE_RADIO_BUTTON_TEXT, HEXAGON_RADIO_BUTTON_TEXT) { Gdx.app.log("", "Selected: $it") }
+            root.addRow()
+            root.addSpinner("Column", 2, 100, 2) { Gdx.app.log("", "Changed column to: $it") }
+            root.addRow()
+            root.addSpinner("Counter offset X", Int.MIN_VALUE, Int.MAX_VALUE, 0) { Gdx.app.log("", "Changed counter offset x: $it") }
+            root.addRow()
+            root.addSpinner("Counter offset Y", Int.MIN_VALUE, Int.MAX_VALUE, 0) { Gdx.app.log("", "Changed counter offset y: $it") }
         }
 
     }
