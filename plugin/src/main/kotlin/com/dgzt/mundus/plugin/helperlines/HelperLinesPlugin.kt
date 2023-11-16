@@ -22,6 +22,8 @@ class HelperLinesPlugin : Plugin() {
     class HelperLinesMenuExtension : MenuExtension {
         override fun getMenuName(): String = "Helper lines"
         override fun setupDialogRootWidget(root: RootWidget) {
+            root.addCheckbox("Enabled") { Gdx.app.log("", "Enabled: $it") }
+            root.addRow()
             root.addRadioButtons(RECTANGLE_RADIO_BUTTON_TEXT, HEXAGON_RADIO_BUTTON_TEXT) { Gdx.app.log("", "Selected: $it") }
             root.addRow()
             root.addSpinner("Column", 2, 100, 2) { Gdx.app.log("", "Changed column to: $it") }
