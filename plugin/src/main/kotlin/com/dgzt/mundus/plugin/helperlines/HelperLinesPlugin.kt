@@ -4,9 +4,12 @@
 package com.dgzt.mundus.plugin.helperlines
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.utils.Array
+import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent
 import com.mbrlabs.mundus.pluginapi.EventExtension
 import com.mbrlabs.mundus.pluginapi.MenuExtension
 import com.mbrlabs.mundus.pluginapi.PluginEventManager
+import com.mbrlabs.mundus.pluginapi.SceneExtension
 import com.mbrlabs.mundus.pluginapi.ui.RootWidget
 import org.pf4j.Extension
 import org.pf4j.Plugin
@@ -22,15 +25,22 @@ class HelperLinesPlugin : Plugin() {
     class HelperLinesMenuExtension : MenuExtension {
         override fun getMenuName(): String = "Helper lines"
         override fun setupDialogRootWidget(root: RootWidget) {
-            root.addCheckbox("Enabled") { Gdx.app.log("", "Enabled: $it") }
+            root.addCheckbox("Enabled") {
+                PropertyManager.enabled = it
+                if (PropertyManager.enabled) {
+                    HelperLinesManager.createHelperLines()
+                } else {
+                    HelperLinesManager.clearHelperLines()
+                }
+            }
             root.addRow()
             root.addRadioButtons(RECTANGLE_RADIO_BUTTON_TEXT, HEXAGON_RADIO_BUTTON_TEXT) { Gdx.app.log("", "Selected: $it") }
             root.addRow()
-            root.addSpinner("Column", 2, 100, 2) { Gdx.app.log("", "Changed column to: $it") }
+            root.addSpinner("Column", 2, 100, PropertyManager.DEFAULT_COLUMN) { PropertyManager.column = it }
             root.addRow()
-            root.addSpinner("Counter offset X", Int.MIN_VALUE, Int.MAX_VALUE, 0) { Gdx.app.log("", "Changed counter offset x: $it") }
+            root.addSpinner("Counter offset X", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.DEFAULT_COUNTER_OFFSET_X) { PropertyManager.counterOffsetX = it }
             root.addRow()
-            root.addSpinner("Counter offset Y", Int.MIN_VALUE, Int.MAX_VALUE, 0) { Gdx.app.log("", "Changed counter offset y: $it") }
+            root.addSpinner("Counter offset Y", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.DEFAULT_COUNTER_OFFSET_Y) { PropertyManager.counterOffsetY = it }
         }
 
     }
@@ -40,6 +50,14 @@ class HelperLinesPlugin : Plugin() {
 
         override fun manageEvents(pluginEventManager: PluginEventManager) {
             pluginEventManager.registerEventListener(TerrainVerticesChangedEventListener())
+        }
+
+    }
+
+    @Extension
+    class HelperLinesSceneExtension : SceneExtension {
+        override fun sceneLoaded(terrains: Array<TerrainComponent>) {
+            PropertyManager.terrains.addAll(terrains)
         }
 
     }
