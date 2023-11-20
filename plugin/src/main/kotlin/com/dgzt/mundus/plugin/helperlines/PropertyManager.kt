@@ -9,6 +9,7 @@ object PropertyManager {
     const val DEFAULT_COUNTER_OFFSET_Y = 0
 
     var enabled = false
+    var type = HelperLinesType.RECTANGLE
     var column = DEFAULT_COLUMN
     var counterOffsetX = DEFAULT_COUNTER_OFFSET_X
     var counterOffsetY = DEFAULT_COUNTER_OFFSET_Y

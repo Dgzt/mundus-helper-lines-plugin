@@ -34,7 +34,12 @@ class HelperLinesPlugin : Plugin() {
                 }
             }
             root.addRow()
-            root.addRadioButtons(RECTANGLE_RADIO_BUTTON_TEXT, HEXAGON_RADIO_BUTTON_TEXT) { Gdx.app.log("", "Selected: $it") }
+            root.addRadioButtons(RECTANGLE_RADIO_BUTTON_TEXT, HEXAGON_RADIO_BUTTON_TEXT) {
+                when (it) {
+                    RECTANGLE_RADIO_BUTTON_TEXT -> PropertyManager.type = HelperLinesType.RECTANGLE
+                    HEXAGON_RADIO_BUTTON_TEXT -> PropertyManager.type = HelperLinesType.HEXAGON
+                }
+            }
             root.addRow()
             root.addSpinner("Column", 2, 100, PropertyManager.DEFAULT_COLUMN) { PropertyManager.column = it }
             root.addRow()
