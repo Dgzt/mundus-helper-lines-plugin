@@ -6,7 +6,7 @@ import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent
 
 object HelperLinesManager {
 
-    private val helperLineShapes = Array<HelperLineShape>()
+    val helperLineShapes = Array<HelperLineShape>()
 
     fun createHelperLines() {
         Gdx.app.log("", "Create helper lines")

@@ -3,12 +3,13 @@
  */
 package com.dgzt.mundus.plugin.helperlines
 
-import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.g3d.RenderableProvider
 import com.badlogic.gdx.utils.Array
 import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent
 import com.mbrlabs.mundus.pluginapi.EventExtension
 import com.mbrlabs.mundus.pluginapi.MenuExtension
 import com.mbrlabs.mundus.pluginapi.PluginEventManager
+import com.mbrlabs.mundus.pluginapi.RenderExtension
 import com.mbrlabs.mundus.pluginapi.SceneExtension
 import com.mbrlabs.mundus.pluginapi.ui.RootWidget
 import org.pf4j.Extension
@@ -65,5 +66,17 @@ class HelperLinesPlugin : Plugin() {
             PropertyManager.terrains.addAll(terrains)
         }
 
+    }
+
+    @Extension
+    class HelperLinesRenderExtension : RenderExtension {
+
+        private val renderableProvider: RenderableProvider
+
+        init {
+            renderableProvider = RenderableProvider { renderables, pool -> HelperLinesManager.helperLineShapes.forEach { it.modelInstance.getRenderables(renderables, pool) } }
+        }
+
+        override fun getRenderableProvider(): RenderableProvider = renderableProvider
     }
 }
