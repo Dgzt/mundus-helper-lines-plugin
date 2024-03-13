@@ -41,13 +41,39 @@ class HelperLinesPlugin : Plugin() {
                     RECTANGLE_RADIO_BUTTON_TEXT -> PropertyManager.type = HelperLinesType.RECTANGLE
                     HEXAGON_RADIO_BUTTON_TEXT -> PropertyManager.type = HelperLinesType.HEXAGON
                 }
+
+                if (PropertyManager.enabled) {
+                    HelperLinesManager.clearHelperLines()
+                    HelperLinesManager.createHelperLines()
+                }
             }.setAlign(Widget.WidgetAlign.LEFT)
             root.addRow()
-            root.addSpinner("Column", 2, 100, PropertyManager.DEFAULT_COLUMN) { PropertyManager.column = it }.setAlign(Widget.WidgetAlign.LEFT)
+            root.addSpinner("Column", 2, 100, PropertyManager.DEFAULT_COLUMN) {
+                PropertyManager.column = it
+
+                if (PropertyManager.enabled) {
+                    HelperLinesManager.clearHelperLines()
+                    HelperLinesManager.createHelperLines()
+                }
+            }.setAlign(Widget.WidgetAlign.LEFT)
             root.addRow()
-            root.addSpinner("Counter offset X", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.DEFAULT_COUNTER_OFFSET_X) { PropertyManager.counterOffsetX = it }.setAlign(Widget.WidgetAlign.LEFT)
+            root.addSpinner("Counter offset X", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.DEFAULT_COUNTER_OFFSET_X) {
+                PropertyManager.counterOffsetX = it
+
+                if (PropertyManager.enabled) {
+                    HelperLinesManager.clearHelperLines()
+                    HelperLinesManager.createHelperLines()
+                }
+            }.setAlign(Widget.WidgetAlign.LEFT)
             root.addRow()
-            root.addSpinner("Counter offset Y", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.DEFAULT_COUNTER_OFFSET_Y) { PropertyManager.counterOffsetY = it }.setAlign(Widget.WidgetAlign.LEFT)
+            root.addSpinner("Counter offset Y", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.DEFAULT_COUNTER_OFFSET_Y) {
+                PropertyManager.counterOffsetY = it
+
+                if (PropertyManager.enabled) {
+                    HelperLinesManager.clearHelperLines()
+                    HelperLinesManager.createHelperLines()
+                }
+            }.setAlign(Widget.WidgetAlign.LEFT)
         }
 
     }
