@@ -37,6 +37,8 @@ java {
 }
 
 tasks.withType<Jar> {
+    archiveFileName.set("helper-lines-plugin.jar")
+
     // Otherwise you'll get a "No main manifest attribute" error
     manifest {
         attributes["Plugin-Class"]= "com.dgzt.mundus.plugin.helperlines.HelperLinesPlugin"
