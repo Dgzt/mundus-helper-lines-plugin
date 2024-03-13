@@ -12,6 +12,7 @@ import com.mbrlabs.mundus.pluginapi.PluginEventManager
 import com.mbrlabs.mundus.pluginapi.RenderExtension
 import com.mbrlabs.mundus.pluginapi.SceneExtension
 import com.mbrlabs.mundus.pluginapi.ui.RootWidget
+import com.mbrlabs.mundus.pluginapi.ui.Widget
 import org.pf4j.Extension
 import org.pf4j.Plugin
 
@@ -33,20 +34,20 @@ class HelperLinesPlugin : Plugin() {
                 } else {
                     HelperLinesManager.clearHelperLines()
                 }
-            }
+            }.setAlign(Widget.WidgetAlign.LEFT)
             root.addRow()
             root.addRadioButtons(RECTANGLE_RADIO_BUTTON_TEXT, HEXAGON_RADIO_BUTTON_TEXT) {
                 when (it) {
                     RECTANGLE_RADIO_BUTTON_TEXT -> PropertyManager.type = HelperLinesType.RECTANGLE
                     HEXAGON_RADIO_BUTTON_TEXT -> PropertyManager.type = HelperLinesType.HEXAGON
                 }
-            }
+            }.setAlign(Widget.WidgetAlign.LEFT)
             root.addRow()
-            root.addSpinner("Column", 2, 100, PropertyManager.DEFAULT_COLUMN) { PropertyManager.column = it }
+            root.addSpinner("Column", 2, 100, PropertyManager.DEFAULT_COLUMN) { PropertyManager.column = it }.setAlign(Widget.WidgetAlign.LEFT)
             root.addRow()
-            root.addSpinner("Counter offset X", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.DEFAULT_COUNTER_OFFSET_X) { PropertyManager.counterOffsetX = it }
+            root.addSpinner("Counter offset X", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.DEFAULT_COUNTER_OFFSET_X) { PropertyManager.counterOffsetX = it }.setAlign(Widget.WidgetAlign.LEFT)
             root.addRow()
-            root.addSpinner("Counter offset Y", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.DEFAULT_COUNTER_OFFSET_Y) { PropertyManager.counterOffsetY = it }
+            root.addSpinner("Counter offset Y", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.DEFAULT_COUNTER_OFFSET_Y) { PropertyManager.counterOffsetY = it }.setAlign(Widget.WidgetAlign.LEFT)
         }
 
     }
