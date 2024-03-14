@@ -3,6 +3,7 @@
  */
 package com.dgzt.mundus.plugin.helperlines
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g3d.RenderableProvider
 import com.badlogic.gdx.math.Vector3
 import com.badlogic.gdx.utils.Array
@@ -39,6 +40,8 @@ class HelperLinesPlugin : Plugin() {
                     HelperLinesManager.clearHelperLines()
                 }
             }.setAlign(Widget.WidgetAlign.LEFT)
+            root.addRow()
+            root.addSpinner("Line width", 0.1f, 30f, PropertyManager.lineWidth, 0.1f) { PropertyManager.lineWidth = it }.setAlign(Widget.WidgetAlign.LEFT)
             root.addRow()
             root.addRadioButtons(RECTANGLE_RADIO_BUTTON_TEXT, HEXAGON_RADIO_BUTTON_TEXT, HelperLinesType.RECTANGLE == PropertyManager.type) {
                 when (it) {
@@ -105,7 +108,12 @@ class HelperLinesPlugin : Plugin() {
         private val renderableProvider: RenderableProvider
 
         init {
-            renderableProvider = RenderableProvider { renderables, pool -> HelperLinesManager.helperLineShapes.forEach { it.modelInstance.getRenderables(renderables, pool) } }
+            renderableProvider = RenderableProvider { renderables, pool ->
+                run {
+                    Gdx.gl.glLineWidth(PropertyManager.lineWidth)
+                    HelperLinesManager.helperLineShapes.forEach { it.modelInstance.getRenderables(renderables, pool) }
+                }
+            }
         }
 
         override fun getRenderableProvider(): RenderableProvider = renderableProvider
