@@ -2,6 +2,7 @@ package com.dgzt.mundus.plugin.helperlines
 
 import com.badlogic.gdx.utils.Array
 import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent
+import com.mbrlabs.mundus.pluginapi.ui.LabelWidget
 
 object PropertyManager {
     const val DEFAULT_COLUMN = 2
@@ -14,4 +15,5 @@ object PropertyManager {
     var counterOffsetX = DEFAULT_COUNTER_OFFSET_X
     var counterOffsetY = DEFAULT_COUNTER_OFFSET_Y
     var terrains = Array<TerrainComponent>()
+    var statusBarLabel: LabelWidget? = null
 }

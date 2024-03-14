@@ -1,6 +1,7 @@
 package com.dgzt.mundus.plugin.helperlines
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.math.Vector3
 import com.badlogic.gdx.utils.Array
 import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent
 
@@ -17,6 +18,16 @@ object HelperLinesManager {
         Gdx.app.log("", "Clear helper lines")
         helperLineShapes.forEach { it.dispose() }
         helperLineShapes.clear()
+    }
+
+    fun findHelperLineCenterObject(terrainComponent: TerrainComponent, pos: Vector3): HelperLineCenterObject? {
+        for (helperLineShape in helperLineShapes) {
+            if (helperLineShape.terrainComponent === terrainComponent) {
+                return helperLineShape.findNearestCenterObject(pos)
+            }
+        }
+
+        return null
     }
 
     private fun addNewHelperLineShape(terrainComponent: TerrainComponent) {

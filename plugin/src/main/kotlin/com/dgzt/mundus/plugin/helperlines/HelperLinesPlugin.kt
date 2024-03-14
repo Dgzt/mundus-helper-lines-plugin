@@ -4,6 +4,7 @@
 package com.dgzt.mundus.plugin.helperlines
 
 import com.badlogic.gdx.graphics.g3d.RenderableProvider
+import com.badlogic.gdx.math.Vector3
 import com.badlogic.gdx.utils.Array
 import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent
 import com.mbrlabs.mundus.pluginapi.EventExtension
@@ -11,6 +12,9 @@ import com.mbrlabs.mundus.pluginapi.MenuExtension
 import com.mbrlabs.mundus.pluginapi.PluginEventManager
 import com.mbrlabs.mundus.pluginapi.RenderExtension
 import com.mbrlabs.mundus.pluginapi.SceneExtension
+import com.mbrlabs.mundus.pluginapi.StatusBarExtension
+import com.mbrlabs.mundus.pluginapi.TerrainHooverExtension
+import com.mbrlabs.mundus.pluginapi.ui.LabelWidget
 import com.mbrlabs.mundus.pluginapi.ui.RootWidget
 import com.mbrlabs.mundus.pluginapi.ui.Widget
 import org.pf4j.Extension
@@ -105,5 +109,32 @@ class HelperLinesPlugin : Plugin() {
         }
 
         override fun getRenderableProvider(): RenderableProvider = renderableProvider
+    }
+
+    @Extension
+    class HelperLineStatusBarExtension : StatusBarExtension {
+        override fun createStatusBarLabel(label: LabelWidget) {
+            PropertyManager.statusBarLabel = label
+        }
+    }
+
+    @Extension
+    class HelperLinesTerrainHooverExtension : TerrainHooverExtension {
+        override fun hoover(terrainComponent: TerrainComponent?, intersection: Vector3?) {
+            if (PropertyManager.enabled) {
+                if (terrainComponent != null && intersection != null) {
+                    val helperLineCenterObject = HelperLinesManager.findHelperLineCenterObject(terrainComponent, intersection)
+
+                    if (helperLineCenterObject != null) {
+                        PropertyManager.statusBarLabel?.setText("${helperLineCenterObject.x} x ${helperLineCenterObject.y}")
+                    } else {
+                        PropertyManager.statusBarLabel?.setText("")
+                    }
+                } else {
+                    PropertyManager.statusBarLabel?.setText("")
+                }
+            }
+        }
+
     }
 }
