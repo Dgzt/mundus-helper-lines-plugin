@@ -31,7 +31,7 @@ class HelperLinesPlugin : Plugin() {
     class HelperLinesMenuExtension : MenuExtension {
         override fun getMenuName(): String = "Helper lines"
         override fun setupDialogRootWidget(root: RootWidget) {
-            root.addCheckbox("Enabled") {
+            root.addCheckbox("Enabled", PropertyManager.enabled) {
                 PropertyManager.enabled = it
                 if (PropertyManager.enabled) {
                     HelperLinesManager.createHelperLines()
@@ -40,7 +40,7 @@ class HelperLinesPlugin : Plugin() {
                 }
             }.setAlign(Widget.WidgetAlign.LEFT)
             root.addRow()
-            root.addRadioButtons(RECTANGLE_RADIO_BUTTON_TEXT, HEXAGON_RADIO_BUTTON_TEXT) {
+            root.addRadioButtons(RECTANGLE_RADIO_BUTTON_TEXT, HEXAGON_RADIO_BUTTON_TEXT, HelperLinesType.RECTANGLE == PropertyManager.type) {
                 when (it) {
                     RECTANGLE_RADIO_BUTTON_TEXT -> PropertyManager.type = HelperLinesType.RECTANGLE
                     HEXAGON_RADIO_BUTTON_TEXT -> PropertyManager.type = HelperLinesType.HEXAGON
@@ -52,7 +52,7 @@ class HelperLinesPlugin : Plugin() {
                 }
             }.setAlign(Widget.WidgetAlign.LEFT)
             root.addRow()
-            root.addSpinner("Column", 2, 100, PropertyManager.DEFAULT_COLUMN) {
+            root.addSpinner("Column", 2, 100, PropertyManager.column) {
                 PropertyManager.column = it
 
                 if (PropertyManager.enabled) {
@@ -61,7 +61,7 @@ class HelperLinesPlugin : Plugin() {
                 }
             }.setAlign(Widget.WidgetAlign.LEFT)
             root.addRow()
-            root.addSpinner("Counter offset X", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.DEFAULT_COUNTER_OFFSET_X) {
+            root.addSpinner("Counter offset X", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.counterOffsetX) {
                 PropertyManager.counterOffsetX = it
 
                 if (PropertyManager.enabled) {
@@ -70,7 +70,7 @@ class HelperLinesPlugin : Plugin() {
                 }
             }.setAlign(Widget.WidgetAlign.LEFT)
             root.addRow()
-            root.addSpinner("Counter offset Y", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.DEFAULT_COUNTER_OFFSET_Y) {
+            root.addSpinner("Counter offset Y", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.counterOffsetY) {
                 PropertyManager.counterOffsetY = it
 
                 if (PropertyManager.enabled) {
