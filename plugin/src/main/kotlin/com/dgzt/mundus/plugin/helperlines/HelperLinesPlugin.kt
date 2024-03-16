@@ -7,6 +7,10 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g3d.RenderableProvider
 import com.badlogic.gdx.math.Vector3
 import com.badlogic.gdx.utils.Array
+import com.dgzt.mundus.plugin.helperlines.listener.GameObjectModifiedListener
+import com.dgzt.mundus.plugin.helperlines.listener.TerrainAddedEventListener
+import com.dgzt.mundus.plugin.helperlines.listener.TerrainRemovedEventListener
+import com.dgzt.mundus.plugin.helperlines.listener.TerrainVerticesChangedEventListener
 import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent
 import com.mbrlabs.mundus.pluginapi.EventExtension
 import com.mbrlabs.mundus.pluginapi.MenuExtension
@@ -90,6 +94,9 @@ class HelperLinesPlugin : Plugin() {
 
         override fun manageEvents(pluginEventManager: PluginEventManager) {
             pluginEventManager.registerEventListener(TerrainVerticesChangedEventListener())
+            pluginEventManager.registerEventListener(TerrainAddedEventListener())
+            pluginEventManager.registerEventListener(TerrainRemovedEventListener())
+            pluginEventManager.registerEventListener(GameObjectModifiedListener())
         }
 
     }

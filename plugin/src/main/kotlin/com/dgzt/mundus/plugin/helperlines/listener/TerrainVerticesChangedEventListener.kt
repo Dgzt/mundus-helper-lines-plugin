@@ -1,6 +1,6 @@
-package com.dgzt.mundus.plugin.helperlines
+package com.dgzt.mundus.plugin.helperlines.listener
 
-import com.badlogic.gdx.Gdx
+import com.dgzt.mundus.plugin.helperlines.HelperLinesManager
 import main.com.mbrlabs.mundus.editorcommons.events.TerrainVerticesChangedEvent
 
 class TerrainVerticesChangedEventListener : TerrainVerticesChangedEvent.TerrainVerticesChangedEventListener {

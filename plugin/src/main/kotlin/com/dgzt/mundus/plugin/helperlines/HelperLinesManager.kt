@@ -34,7 +34,7 @@ object HelperLinesManager {
         helperLineShapes.filter { it.terrainComponent == terrainComponent }.forEach { it.updateVertices() }
     }
 
-    private fun addNewHelperLineShape(terrainComponent: TerrainComponent) {
+    fun addNewHelperLineShape(terrainComponent: TerrainComponent) {
         val width = PropertyManager.column
         val counterOffsetX = PropertyManager.counterOffsetX
         val counterOffsetY = PropertyManager.counterOffsetY
@@ -47,4 +47,13 @@ object HelperLinesManager {
         }
         helperLineShapes.add(helperLineShape)
     }
+
+    fun removeHelperLineShape(terrainComponent: TerrainComponent) {
+        helperLineShapes.filter { it.terrainComponent == terrainComponent }.forEach {
+            it.dispose()
+            helperLineShapes.removeValue(it, true)
+        }
+    }
+
+    fun contains(terrainComponent: TerrainComponent) = helperLineShapes.any { it.terrainComponent == terrainComponent }
 }
