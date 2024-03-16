@@ -30,6 +30,10 @@ object HelperLinesManager {
         return null
     }
 
+    fun updateVertices(terrainComponent: TerrainComponent) {
+        helperLineShapes.filter { it.terrainComponent == terrainComponent }.forEach { it.updateVertices() }
+    }
+
     private fun addNewHelperLineShape(terrainComponent: TerrainComponent) {
         val width = PropertyManager.column
         val counterOffsetX = PropertyManager.counterOffsetX

@@ -5,10 +5,7 @@ import main.com.mbrlabs.mundus.editorcommons.events.TerrainVerticesChangedEvent
 
 class TerrainVerticesChangedEventListener : TerrainVerticesChangedEvent.TerrainVerticesChangedEventListener {
 
-    var changedNum = 0
-
     override fun onTerrainVerticesChanged(event: TerrainVerticesChangedEvent) {
-        ++changedNum
-        Gdx.app.log("", "onTerrainVerticesChanged $changedNum")
+        HelperLinesManager.updateVertices(event.terrainComponent)
     }
 }
