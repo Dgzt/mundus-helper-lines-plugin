@@ -2,7 +2,7 @@ package com.dgzt.mundus.plugin.helperlines.listener
 
 import com.dgzt.mundus.plugin.helperlines.HelperLinesManager
 import com.dgzt.mundus.plugin.helperlines.PropertyManager
-import main.com.mbrlabs.mundus.editorcommons.events.TerrainRemovedEvent
+import com.mbrlabs.mundus.editorcommons.events.TerrainRemovedEvent
 
 class TerrainRemovedEventListener : TerrainRemovedEvent.TerrainRemovedEventListener {
     override fun onTerrainRemoved(event: TerrainRemovedEvent) {

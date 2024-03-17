@@ -4,7 +4,7 @@ import com.dgzt.mundus.plugin.helperlines.HelperLinesManager
 import com.dgzt.mundus.plugin.helperlines.PropertyManager
 import com.mbrlabs.mundus.commons.scene3d.components.Component
 import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent
-import main.com.mbrlabs.mundus.editorcommons.events.GameObjectModifiedEvent
+import com.mbrlabs.mundus.editorcommons.events.GameObjectModifiedEvent
 
 class GameObjectModifiedListener : GameObjectModifiedEvent.GameObjectModifiedListener {
     override fun onGameObjectModified(event: GameObjectModifiedEvent) {
