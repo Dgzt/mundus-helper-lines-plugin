@@ -12,6 +12,7 @@ import com.dgzt.mundus.plugin.helperlines.listener.TerrainAddedEventListener
 import com.dgzt.mundus.plugin.helperlines.listener.TerrainRemovedEventListener
 import com.dgzt.mundus.plugin.helperlines.listener.TerrainVerticesChangedEventListener
 import com.mbrlabs.mundus.commons.scene3d.components.TerrainComponent
+import com.mbrlabs.mundus.pluginapi.DisposeExtension
 import com.mbrlabs.mundus.pluginapi.EventExtension
 import com.mbrlabs.mundus.pluginapi.MenuExtension
 import com.mbrlabs.mundus.pluginapi.PluginEventManager
@@ -151,5 +152,12 @@ class HelperLinesPlugin : Plugin() {
             }
         }
 
+    }
+
+    @Extension
+    class HelperLineDisposeExtension : DisposeExtension {
+        override fun dispose() {
+            HelperLinesManager.clearHelperLines()
+        }
     }
 }
