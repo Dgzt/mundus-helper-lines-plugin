@@ -18,15 +18,25 @@ plugins {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+    maven {
+        url=uri("https://jitpack.io")
+    }
 }
 
 dependencies {
     api("org.pf4j:pf4j:3.10.0")
     api("com.badlogicgames.gdx:gdx:1.12.0")
     kapt("org.pf4j:pf4j:3.11.0")
-    api(files("../libs/commons-0.5.1.jar"))
-    api(files("../libs/plugin-api-0.5.1.jar"))
-    api(files("../libs/editor-commons-0.5.1.jar"))
+
+    // TODO: Change to JamesTKhan's link after this branch merged
+    implementation("com.github.Dgzt.Mundus:commons:editor-plugin-system-SNAPSHOT")
+    implementation("com.github.Dgzt.Mundus:plugin-api:editor-plugin-system-SNAPSHOT")
+    implementation("com.github.Dgzt.Mundus:editor-commons:editor-plugin-system-SNAPSHOT")
+
+    // For local testing
+//    api(files("../libs/commons-0.5.1.jar"))
+//    api(files("../libs/plugin-api-0.5.1.jar"))
+//    api(files("../libs/editor-commons-0.5.1.jar"))
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
