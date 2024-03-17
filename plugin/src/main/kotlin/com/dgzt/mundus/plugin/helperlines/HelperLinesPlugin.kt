@@ -19,7 +19,7 @@ import com.mbrlabs.mundus.pluginapi.PluginEventManager
 import com.mbrlabs.mundus.pluginapi.RenderExtension
 import com.mbrlabs.mundus.pluginapi.SceneExtension
 import com.mbrlabs.mundus.pluginapi.StatusBarExtension
-import com.mbrlabs.mundus.pluginapi.TerrainHooverExtension
+import com.mbrlabs.mundus.pluginapi.TerrainHoverExtension
 import com.mbrlabs.mundus.pluginapi.ui.LabelWidget
 import com.mbrlabs.mundus.pluginapi.ui.RootWidget
 import com.mbrlabs.mundus.pluginapi.ui.Widget
@@ -135,8 +135,8 @@ class HelperLinesPlugin : Plugin() {
     }
 
     @Extension
-    class HelperLinesTerrainHooverExtension : TerrainHooverExtension {
-        override fun hoover(terrainComponent: TerrainComponent?, intersection: Vector3?) {
+    class HelperLinesTerrainHooverExtension : TerrainHoverExtension {
+        override fun hover(terrainComponent: TerrainComponent?, intersection: Vector3?) {
             if (PropertyManager.enabled) {
                 if (terrainComponent != null && intersection != null) {
                     val helperLineCenterObject = HelperLinesManager.findHelperLineCenterObject(terrainComponent, intersection)
