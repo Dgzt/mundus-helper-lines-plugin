@@ -46,6 +46,8 @@ class HelperLinesPlugin : Plugin() {
                 }
             }.setAlign(Widget.WidgetAlign.LEFT)
             root.addRow()
+            root.addLabel("")
+            root.addRow()
             root.addSpinner("Line width", 0.1f, 30f, PropertyManager.lineWidth, 0.1f) { PropertyManager.lineWidth = it }.setAlign(Widget.WidgetAlign.LEFT)
             root.addRow()
             root.addRadioButtons(RECTANGLE_RADIO_BUTTON_TEXT, HEXAGON_RADIO_BUTTON_TEXT, HelperLinesType.RECTANGLE == PropertyManager.type) {
@@ -86,6 +88,10 @@ class HelperLinesPlugin : Plugin() {
                     HelperLinesManager.createHelperLines()
                 }
             }.setAlign(Widget.WidgetAlign.LEFT)
+            root.addRow()
+            root.addLabel("")
+            root.addRow()
+            root.addLabel("Version: 0.0.1").setAlign(Widget.WidgetAlign.RIGHT)
         }
 
     }
