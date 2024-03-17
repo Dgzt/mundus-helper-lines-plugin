@@ -111,7 +111,14 @@ class HelperLinesPlugin : Plugin() {
     @Extension
     class HelperLinesSceneExtension : SceneExtension {
         override fun sceneLoaded(terrains: Array<TerrainComponent>) {
+            if (PropertyManager.enabled) {
+                HelperLinesManager.clearHelperLines()
+            }
+            PropertyManager.terrains.clear()
             PropertyManager.terrains.addAll(terrains)
+            if (PropertyManager.enabled) {
+                HelperLinesManager.createHelperLines()
+            }
         }
 
     }
