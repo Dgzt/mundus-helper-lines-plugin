@@ -22,7 +22,7 @@ import com.mbrlabs.mundus.pluginapi.StatusBarExtension
 import com.mbrlabs.mundus.pluginapi.TerrainHoverExtension
 import com.mbrlabs.mundus.pluginapi.ui.LabelWidget
 import com.mbrlabs.mundus.pluginapi.ui.RootWidget
-import com.mbrlabs.mundus.pluginapi.ui.Widget
+import com.mbrlabs.mundus.pluginapi.ui.WidgetAlign
 import org.pf4j.Extension
 import org.pf4j.Plugin
 
@@ -35,6 +35,14 @@ class HelperLinesPlugin : Plugin() {
 
     @Extension
     class HelperLinesMenuExtension : MenuExtension {
+
+        companion object {
+            const val ZERO_PAD = 0f
+            const val SMALL_PAD = 2.5f
+            const val NORMAL_PAD = 5f
+            const val BIG_PAD = 20f
+        }
+
         override fun getMenuName(): String = "Helper lines"
         override fun setupDialogRootWidget(root: RootWidget) {
             root.addCheckbox("Enabled", PropertyManager.enabled) {
@@ -44,11 +52,9 @@ class HelperLinesPlugin : Plugin() {
                 } else {
                     HelperLinesManager.clearHelperLines()
                 }
-            }.setAlign(Widget.WidgetAlign.LEFT)
+            }.setAlign(WidgetAlign.LEFT).setPad(NORMAL_PAD, NORMAL_PAD, BIG_PAD, NORMAL_PAD)
             root.addRow()
-            root.addLabel("")
-            root.addRow()
-            root.addSpinner("Line width", 0.1f, 30f, PropertyManager.lineWidth, 0.1f) { PropertyManager.lineWidth = it }.setAlign(Widget.WidgetAlign.LEFT)
+            root.addSpinner("Line width", 0.1f, 30f, PropertyManager.lineWidth, 0.1f) { PropertyManager.lineWidth = it }.setAlign(WidgetAlign.LEFT).setPad(ZERO_PAD, NORMAL_PAD, SMALL_PAD, NORMAL_PAD)
             root.addRow()
             root.addRadioButtons(RECTANGLE_RADIO_BUTTON_TEXT, HEXAGON_RADIO_BUTTON_TEXT, HelperLinesType.RECTANGLE == PropertyManager.type) {
                 when (it) {
@@ -60,7 +66,7 @@ class HelperLinesPlugin : Plugin() {
                     HelperLinesManager.clearHelperLines()
                     HelperLinesManager.createHelperLines()
                 }
-            }.setAlign(Widget.WidgetAlign.LEFT)
+            }.setAlign(WidgetAlign.LEFT).setPad(ZERO_PAD, NORMAL_PAD, SMALL_PAD, NORMAL_PAD)
             root.addRow()
             root.addSpinner("Column", 2, 100, PropertyManager.column) {
                 PropertyManager.column = it
@@ -69,7 +75,7 @@ class HelperLinesPlugin : Plugin() {
                     HelperLinesManager.clearHelperLines()
                     HelperLinesManager.createHelperLines()
                 }
-            }.setAlign(Widget.WidgetAlign.LEFT)
+            }.setAlign(WidgetAlign.LEFT).setPad(ZERO_PAD, NORMAL_PAD, SMALL_PAD, NORMAL_PAD)
             root.addRow()
             root.addSpinner("Counter offset X", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.counterOffsetX) {
                 PropertyManager.counterOffsetX = it
@@ -78,7 +84,7 @@ class HelperLinesPlugin : Plugin() {
                     HelperLinesManager.clearHelperLines()
                     HelperLinesManager.createHelperLines()
                 }
-            }.setAlign(Widget.WidgetAlign.LEFT)
+            }.setAlign(WidgetAlign.LEFT).setPad(ZERO_PAD, NORMAL_PAD, SMALL_PAD, NORMAL_PAD)
             root.addRow()
             root.addSpinner("Counter offset Y", Int.MIN_VALUE, Int.MAX_VALUE, PropertyManager.counterOffsetY) {
                 PropertyManager.counterOffsetY = it
@@ -87,11 +93,9 @@ class HelperLinesPlugin : Plugin() {
                     HelperLinesManager.clearHelperLines()
                     HelperLinesManager.createHelperLines()
                 }
-            }.setAlign(Widget.WidgetAlign.LEFT)
+            }.setAlign(WidgetAlign.LEFT).setPad(ZERO_PAD, NORMAL_PAD, BIG_PAD, NORMAL_PAD)
             root.addRow()
-            root.addLabel("")
-            root.addRow()
-            root.addLabel("Version: 0.0.1").setAlign(Widget.WidgetAlign.RIGHT)
+            root.addLabel("Version: 0.0.1").setAlign(WidgetAlign.RIGHT).setPad(ZERO_PAD, NORMAL_PAD, NORMAL_PAD, NORMAL_PAD)
         }
 
     }
