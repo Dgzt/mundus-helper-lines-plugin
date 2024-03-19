@@ -20,4 +20,5 @@ The plugin will be apper in the Plugins menu:
 
 Can anbled with **enabled** checkbox and can adjust the plugin. 
 
-![image](https://github.com/Dgzt/mundus-helper-lines-plugin/assets/1684274/4c15cc1f-bdd9-45f0-b2ae-b6886d4f706a)
+![image](https://github.com/Dgzt/mundus-helper-lines-plugin/assets/1684274/040e98e7-2a26-4459-864d-760b0805e102)
+
