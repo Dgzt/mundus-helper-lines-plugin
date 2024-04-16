@@ -17,9 +17,9 @@ import com.mbrlabs.mundus.pluginapi.EventExtension
 import com.mbrlabs.mundus.pluginapi.MenuExtension
 import com.mbrlabs.mundus.pluginapi.PluginEventManager
 import com.mbrlabs.mundus.pluginapi.RenderExtension
-import com.mbrlabs.mundus.pluginapi.SceneExtension
 import com.mbrlabs.mundus.pluginapi.StatusBarExtension
 import com.mbrlabs.mundus.pluginapi.TerrainHoverExtension
+import com.mbrlabs.mundus.pluginapi.TerrainSceneExtension
 import com.mbrlabs.mundus.pluginapi.ui.LabelWidget
 import com.mbrlabs.mundus.pluginapi.ui.RootWidget
 import com.mbrlabs.mundus.pluginapi.ui.WidgetAlign
@@ -113,7 +113,7 @@ class HelperLinesPlugin : Plugin() {
     }
 
     @Extension
-    class HelperLinesSceneExtension : SceneExtension {
+    class HelperLinesTerrainSceneExtension : TerrainSceneExtension {
         override fun sceneLoaded(terrains: Array<TerrainComponent>) {
             if (PropertyManager.enabled) {
                 HelperLinesManager.clearHelperLines()
